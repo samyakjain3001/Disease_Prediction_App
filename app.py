@@ -8,6 +8,7 @@ from flask import send_from_directory
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 import tensorflow as tf
+from features import cancer_features, heart_features, diabetes_features, kidney_features, liver_features
 
 #from this import SQLAlchemy
 app=Flask(__name__,template_folder='template')
@@ -113,38 +114,44 @@ def about():
     return render_template("about.html")
 
 
+@app.template_global(name='zip')
+def _zip(*args, **kwargs): #to not overwrite builtin zip in globals
+    return __builtins__.zip(*args, **kwargs)
+
 @app.route("/cancer")
 def cancer():
-    return render_template("cancer.html")
+    return render_template("cancer.html", 
+                            features=cancer_features())
 
 
 @app.route("/diabetes")
 def diabetes():
     #if form.validate_on_submit():
-    return render_template("diabetes.html")
+    return render_template("diabetes.html", features=diabetes_features())
 
 @app.route("/heart")
 def heart():
-    return render_template("heart.html")
+    return render_template("heart.html", 
+                            features=heart_features())
 
 
 @app.route("/liver")
 def liver():
     #if form.validate_on_submit():
-    return render_template("liver.html")
+    return render_template("liver.html", features=liver_features())
 
 @app.route("/kidney")
 def kidney():
     #if form.validate_on_submit():
-    return render_template("kidney.html")
+    return render_template("kidney.html", features = kidney_features())
 
-@app.route("/Malaria")
+@app.route("/malaria")
 def Malaria():
-    return render_template("index.html")
+    return render_template("maleria.html")
 
-@app.route("/Pneumonia")
+@app.route("/pneumonia")
 def Pneumonia():
-    return render_template("index2.html")
+    return render_template("pneumonia.html")
 
 
 def ValuePredictor(to_predict_list, size):
@@ -194,4 +201,4 @@ def result():
 
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug=True)
