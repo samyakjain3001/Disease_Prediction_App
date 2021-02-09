@@ -9,6 +9,8 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 import tensorflow as tf
 from features import cancer_features, heart_features, diabetes_features, kidney_features, liver_features
+from apis import api, api1
+
 
 #from this import SQLAlchemy
 app=Flask(__name__,template_folder='template')
@@ -26,28 +28,6 @@ STATIC_FOLDER = 'static'
 from tensorflow.keras.models import load_model
 model = load_model('models_dir/model111.h5')
 model222=load_model("models_dir/my_model.h5")
-
-#FOR THE FIRST MODEL
-
-# call model to predict an image
-def api(full_path):
-    data = image.load_img(full_path, target_size=(50, 50, 3))
-    data = np.expand_dims(data, axis=0)
-    data = data * 1.0 / 255
-
-    #with graph.as_default():
-    predicted = model.predict(data)
-    return predicted
-#FOR THE SECOND MODEL
-def api1(full_path):
-    data = image.load_img(full_path, target_size=(64, 64, 3))
-    data = np.expand_dims(data, axis=0)
-    data = data * 1.0 / 255
-
-    #with graph.as_default():
-    predicted = model222.predict(data)
-    return predicted
-
 
 
 # procesing uploaded file and predict it
@@ -201,4 +181,4 @@ def result():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
