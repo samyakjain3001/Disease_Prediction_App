@@ -63,5 +63,5 @@
   
   <p> The whole project is deployed on Heroku Cloud.
   
- <p> Here is the link where you can access the project live :  <p>
+ <p> Here is the [link](https://disease-prediction-web-app.herokuapp.com/) where you can access the project live :  <p>
   <p> Thank you!</p>
