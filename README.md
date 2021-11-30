@@ -1,6 +1,6 @@
 # Disease Prediction App
 
-<img src="" width="1100" height="300" />
+<img src="https://cdn.builtin.com/sites/www.builtin.com/files/styles/ckeditor_optimize/public/inline-images/healthcare-technology-pillar-page-uses.jpeg" width="1100" height="300" />
 <p> </p>
 <p>Here, I have developed an end-to-end disease predicting web app. It makes predictions about various diseases like Malaria, Pneumonia, Diabetes etc.</p>
 
@@ -45,7 +45,6 @@
 <ul>
 <li><p><b>Python ( 3.8 version)</b></p></li>
 <li><p><b>Flask</b></p></li>
-<li><p><b>OpenCV</b></p></li>
 <li><p><b>Pandas</b></p></li>
 <li><p><b>Numpy</b></p></li>
 <li><p><b>HTML</b></p></li>
