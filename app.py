@@ -41,16 +41,15 @@ def upload_file():
             file = request.files['image']
             full_name = os.path.join(UPLOAD_FOLDER, file.filename)
             file.save(full_name)
-
             indices = {0: 'PARASITIC', 1: 'Uninfected', 2: 'Invasive carcinomar', 3: 'Normal'}
             result = api(full_name)
-            print(result)
 
             predicted_class = np.asscalar(np.argmax(result, axis=1))
             accuracy = round(result[0][predicted_class] * 100, 2)
             label = indices[predicted_class]
             return render_template('predict.html', image_file_name = file.filename, label = label, accuracy = accuracy)
-        except:
+        except Exception as e:
+            print(e)
             flash("Please select the image first !!", "danger")      
             return redirect(url_for("Malaria"))
 
